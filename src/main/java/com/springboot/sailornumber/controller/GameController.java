@@ -2,6 +2,7 @@ package com.springboot.sailornumber.controller;
 
 import com.springboot.sailornumber.exception.ResourceNotFoundException;
 import com.springboot.sailornumber.model.Game;
+import com.springboot.sailornumber.payload.request.NewGameRequest;
 import com.springboot.sailornumber.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,12 @@ public class GameController {
     }
 
     @PostMapping("/new")
-    public Game newGame(@Valid @RequestBody Game game) {
+    public Game newGame(@Valid @RequestBody NewGameRequest newGameRequest) {
+        Game game = new Game(
+                newGameRequest.getName(),
+                newGameRequest.getDateOfBirth(),
+                newGameRequest.getNrOfDigits()
+        );
         return gameRepository.save(game);
     }
 }

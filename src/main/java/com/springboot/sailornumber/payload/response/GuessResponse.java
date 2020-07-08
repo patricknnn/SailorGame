@@ -1,4 +1,4 @@
-package com.springboot.sailornumber.payload;
+package com.springboot.sailornumber.payload.response;
 
 import com.springboot.sailornumber.model.Guess;
 import com.springboot.sailornumber.model.GuessResult;

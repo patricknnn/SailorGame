@@ -4,7 +4,7 @@ import com.springboot.sailornumber.exception.ResourceNotFoundException;
 import com.springboot.sailornumber.service.GameLogic;
 import com.springboot.sailornumber.model.Guess;
 import com.springboot.sailornumber.model.GuessResult;
-import com.springboot.sailornumber.payload.GuessResponse;
+import com.springboot.sailornumber.payload.response.GuessResponse;
 import com.springboot.sailornumber.repository.GuessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
