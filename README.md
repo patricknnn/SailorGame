@@ -8,7 +8,7 @@ Web API that plays a number guessing game with the user.
 
 ## The game
 * Generates a random number of length [nrOfDigits] to guess
-* Take the input as a whole and return the following hint:
+* Takes guess from the user:
     * For each correct digit in the correct place, counts a ‘Ship’
     * For each correct digit, but in the wrong place, counts a ‘Buoy’
 * Repeats until player guesses the correct number
