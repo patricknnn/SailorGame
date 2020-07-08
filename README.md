@@ -13,8 +13,17 @@ Web API that plays a number guessing game with the user.
     * For each correct digit, but in the wrong place, counts a ‘Buoy’
 * Repeats until player guesses the correct number
 
+## Endpoints
+* /api/game/all - returns list of all games
+* /api/game/gameId/{id} - returns game
+* /api/game/new - create new game
+* /api/guess/all - returns list of all guesses
+* /api/guess/gameId/{id} - returns list of guesses for game
+* /api/guess/guessId/{id} - returns guess
+* /api/guess/submit - submit guess
+
 ## Entities
-The following entities are used based on the above requirements:
+The following entities are used:
 
 ### Game
 * ID
