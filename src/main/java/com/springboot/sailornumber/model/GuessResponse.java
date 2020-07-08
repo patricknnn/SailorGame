@@ -1,7 +1,4 @@
-package com.springboot.sailornumber.payload.response;
-
-import com.springboot.sailornumber.model.Guess;
-import com.springboot.sailornumber.model.GuessResult;
+package com.springboot.sailornumber.model;
 
 public class GuessResponse {
     private final Guess guess;
