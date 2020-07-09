@@ -21,6 +21,7 @@ Web API that plays a number guessing game with the user.
 * /api/guess/gameId/{id} - returns list of guesses for game
 * /api/guess/guessId/{id} - returns guess
 * /api/guess/submit - submit guess
+* /api/stats/gameId/{id} - returns stats for game
 
 ## Entities
 The following entities are used:

@@ -2,7 +2,7 @@ package com.springboot.sailornumber.controller;
 
 import com.springboot.sailornumber.exception.ResourceNotFoundException;
 import com.springboot.sailornumber.model.Game;
-import com.springboot.sailornumber.model.GameStats;
+import com.springboot.sailornumber.payload.response.GameStatsResponse;
 import com.springboot.sailornumber.model.Guess;
 import com.springboot.sailornumber.repository.GameRepository;
 import com.springboot.sailornumber.repository.GuessRepository;
@@ -21,11 +21,11 @@ public class StatsController {
     private GuessRepository guessRepository;
 
     @GetMapping("/gameId/{id}")
-    public GameStats getGameStats(@PathVariable(value = "id") Long gameId) throws ResourceNotFoundException {
+    public GameStatsResponse getGameStats(@PathVariable(value = "id") Long gameId) throws ResourceNotFoundException {
         Game game = gameRepository.findById(gameId).orElseThrow(
                 () -> new ResourceNotFoundException("Game not found for this id : " + gameId)
         );
         List<Guess> guesses = guessRepository.findAllByGameId(gameId);
-        return new GameStats(game, guesses);
+        return new GameStatsResponse(game, guesses);
     }
 }

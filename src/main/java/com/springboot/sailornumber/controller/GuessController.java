@@ -1,10 +1,11 @@
 package com.springboot.sailornumber.controller;
 
 import com.springboot.sailornumber.exception.ResourceNotFoundException;
+import com.springboot.sailornumber.payload.request.GuessRequest;
 import com.springboot.sailornumber.service.GameLogic;
 import com.springboot.sailornumber.model.Guess;
 import com.springboot.sailornumber.model.GuessResult;
-import com.springboot.sailornumber.model.GuessResponse;
+import com.springboot.sailornumber.payload.response.GuessResponse;
 import com.springboot.sailornumber.repository.GuessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,11 +42,12 @@ public class GuessController {
     }
 
     @PostMapping("/submit")
-    public ResponseEntity<GuessResponse> submitGuess(@Valid @RequestBody Guess guess) throws ResourceNotFoundException {
+    public GuessResponse submitGuess(@Valid @RequestBody GuessRequest guessRequest) throws ResourceNotFoundException {
+        Guess guess = new Guess(guessRequest.getGameId(), guessRequest.getGuess());
         Guess savedGuess = guessRepository.save(guess);
         GuessResult guessResult = gameLogic.guessResult(savedGuess);
 
-        return ResponseEntity.ok(new GuessResponse(savedGuess, guessResult));
+        return new GuessResponse(savedGuess, guessResult);
     }
 
 }
