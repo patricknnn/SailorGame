@@ -12,7 +12,7 @@
 
     <mat-grid-list cols="3" rowHeight="2:1" *ngIf="lastGuess && lastGuessResult">
       <mat-grid-tile>
-        <mat-icon color="">how_to_vote</mat-icon>{{lastGuess.guess}}
+        <mat-icon color="warn">history</mat-icon>{{lastGuess.guess}}
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-icon color="primary">directions_boat</mat-icon>{{lastGuessResult.nrOfShips}}
@@ -28,12 +28,14 @@
       <div class="form-group">
         <mat-form-field appearance="fill" class="form-field">
           <mat-label>Guess</mat-label>
-          <input matInput type="text" id="guess" placeholder="1234" name="guess"
+          <input matInput type="text" id="guess" name="guess"
                  required
+                 pattern="[0-9]*"
+                 minlength="{{game.nrOfDigits}}"
+                 maxlength="{{game.nrOfDigits}}"
                  [(ngModel)]="currentGuess.guess"
                  #guess="ngModel"
-                 #message
-                 maxlength="{{game.nrOfDigits}}">
+                 #message>
           <mat-hint align="start" [hidden]="guess.valid || guess.pristine">
             Guess is required and should contain {{game.nrOfDigits}} digits.
           </mat-hint>
@@ -46,6 +48,6 @@
 
   </mat-card-content>
   <mat-card-actions>
-    <app-card-actions></app-card-actions>
+    <app-card-actions [play]="false"></app-card-actions>
   </mat-card-actions>
 </mat-card>

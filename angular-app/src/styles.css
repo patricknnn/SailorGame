@@ -7,12 +7,14 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #ccc !important;
 }
 
 /** CARD */
 .mat-card {
   max-width: 600px;
   margin-top: 20px;
+  background-color: #ddd;
 }
 
 .card-icon {

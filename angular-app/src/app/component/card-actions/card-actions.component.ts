@@ -5,12 +5,11 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './card-actions.component.html',
   styleUrls: ['./card-actions.component.css']
 })
-export class CardActionsComponent implements OnInit {
-  @Input() card: string;
+export class CardActionsComponent {
+  @Input() play: boolean = true;
+  @Input() stats: boolean = true;
+  @Input() exit: boolean = true;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

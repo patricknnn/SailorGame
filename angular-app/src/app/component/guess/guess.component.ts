@@ -62,6 +62,8 @@ export class GuessComponent implements OnInit {
         this.lastGuessResult = data.result;
         // Reset current guess
         this.currentGuess = new Guess();
+        // If won, redirect
+        this.router.navigate(['/won', { id: this.game.id }]);
       }, error => console.log(error));
   }
 }

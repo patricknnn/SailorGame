@@ -1,4 +1,4 @@
 
-<button mat-flat-button color="primary" routerLink="/game" routerLinkActive="active" class="card-action-button">PLAY</button>
-<button mat-flat-button color="accent" routerLink="/stats" routerLinkActive="active" class="card-action-button">STATS</button>
-<button mat-flat-button color="warn" routerLink="/welcome" routerLinkActive="active" class="card-action-button">EXIT</button>
+<button mat-flat-button color="primary" *ngIf="play" routerLink="/game" routerLinkActive="active" class="card-action-button">PLAY</button>
+<button mat-flat-button color="accent" *ngIf="stats" routerLink="/stats" routerLinkActive="active" class="card-action-button">STATS</button>
+<button mat-flat-button color="warn" *ngIf="exit" routerLink="/welcome" routerLinkActive="active" class="card-action-button">EXIT</button>
