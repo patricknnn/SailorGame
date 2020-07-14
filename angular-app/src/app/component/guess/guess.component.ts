@@ -4,6 +4,7 @@ import {GameService} from "../../service/game.service";
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {Game} from "../../model/game";
 import {GuessResult} from "../../model/guessresult";
+import {GuessResponse} from "../../model/guessres";
 
 @Component({
   selector: 'app-guess',
@@ -20,7 +21,8 @@ export class GuessComponent implements OnInit {
     private gameService: GameService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     // this.route.queryParams.subscribe(params => {
@@ -57,13 +59,23 @@ export class GuessComponent implements OnInit {
     this.gameService.submitGuess(this.currentGuess)
       .subscribe(data => {
         console.log(data);
-        // Process data received
-        this.lastGuess = data.guess;
-        this.lastGuessResult = data.result;
-        // Reset current guess
-        this.currentGuess = new Guess();
-        // If won, redirect
-        this.router.navigate(['/won', { id: this.game.id }]);
+        // Process data
+        this.processData(data);
+        // Reset
+        this.reset();
       }, error => console.log(error));
+  }
+
+  processData(data: GuessResponse): void {
+    this.lastGuess = data.guess;
+    this.lastGuessResult = data.result;
+    // If won, redirect
+    if (data.result.correct) {
+      this.router.navigate(['/won', {id: this.game.id}]);
+    }
+  }
+
+  reset(): void {
+    this.currentGuess = new Guess();
   }
 }
