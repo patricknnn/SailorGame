@@ -1,9 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
 
-.card {
-  min-width: 500px !important;
-  min-height: 300px !important;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/** CARD */
+.mat-card {
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.card-icon {
+  font-size: 40px;
+}
+
+.subtitle-icon {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+/** FORM */
+.form-field {
+  width: 100%;
 }

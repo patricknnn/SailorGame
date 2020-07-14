@@ -1,79 +1,8 @@
 <div class="container h-100 d-flex justify-content-center">
   <div class="card-wrapper my-auto">
 
-    <!-- HEADER -->
-    <div class="card">
-      <div class="card-header">
-        <p *ngIf="game">Game ID: {{game.id}} - Name: {{game.name}} DoB: {{game.dateOfBirth}}</p>
-      </div>
-
-      <!-- NEW GAME -->
-      <div class="card-body" *ngIf="!game">
-        <h5 class="card-title">Start game</h5>
-        <p class="card-text">Please enter some details.</p>
-        <form (ngSubmit)="onSubmitNewGame()">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Name</span>
-            </div>
-            <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="newGame.name">
-          </div>
-<!--          <div class="input-group mb-3">-->
-<!--            <div class="input-group-prepend">-->
-<!--              <span class="input-group-text">Date of birth</span>-->
-<!--            </div>-->
-<!--            <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" required [(ngModel)]="newGame.dateOfBirth">-->
-<!--          </div>-->
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="nrOfDigits">Number of digits</label>
-            </div>
-            <select class="custom-select" id="nrOfDigits" name="nrOfDigits" required [(ngModel)]="newGame.nrOfDigits">
-              <option selected>Choose...</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-success">Start game</button>
-        </form>
-      </div>
-
-      <!-- NEW GAME -->
-      <div class="card-body" *ngIf="game && !playerWon">
-        <h5 class="card-title">Start guessing</h5>
-        <p>Ships: {{ships}} - Buoys: {{buoys}}</p>
-        <p class="card-text">Please enter your guess.</p>
-        <form (ngSubmit)="onSubmitGuess()">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Guess</span>
-            </div>
-            <input type="number" class="form-control" id="guess" name="guess" required [(ngModel)]="currentGuess.guess">
-          </div>
-          <button type="submit" class="btn btn-success">Submit guess</button>
-        </form>
-      </div>
-
-      <!-- END GAME -->
-      <div class="card-body" *ngIf="game && playerWon">
-        <h5 class="card-title">You got it!</h5>
-        <p class="card-text">It took you just <strong>{{guessList.length}}</strong> tries!</p>
-        <button (click)="toggleStats()" class="btn btn-primary">Show stats</button>
-      </div>
-
-      <!-- STATS -->
-      <div class="card-body" *ngIf="game && showStats">
-        <h5 class="card-title">Stats:</h5>
-      </div>
-
-
-      <!-- FOOTER -->
-      <div class="card-footer text-muted">
-        Footer.
-      </div>
+    <div [@fadeAnimation]="getRouterOutletState(o)">
+      <router-outlet #o="outlet"></router-outlet>
     </div>
 
   </div>

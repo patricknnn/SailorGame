@@ -1,4 +1,4 @@
 export class Guess {
   gameId: number;
-  guess: number;
+  guess: string;
 }

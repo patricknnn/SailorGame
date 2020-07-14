@@ -1,0 +1,17 @@
+<mat-card class="mat-card mat-elevation-z8">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon color="primary" class="card-icon">card_giftcard</mat-icon>
+    </div>
+    <mat-card-title>You guessed the correct number!</mat-card-title>
+    <mat-card-subtitle *ngIf="game">
+      Game {{game.id}} started by {{game.name}} born {{game.dateOfBirth}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Congratulations!</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-card-actions></app-card-actions>
+  </mat-card-actions>
+</mat-card>

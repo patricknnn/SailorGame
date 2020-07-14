@@ -1,0 +1,51 @@
+<mat-card class="mat-card mat-elevation-z8">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon color="primary" class="card-icon">addchart</mat-icon>
+    </div>
+    <mat-card-title>Guess the correct number</mat-card-title>
+    <mat-card-subtitle *ngIf="game">
+      Game {{game.id}} started by {{game.name}} born {{game.dateOfBirth}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-grid-list cols="3" rowHeight="2:1" *ngIf="lastGuess && lastGuessResult">
+      <mat-grid-tile>
+        <mat-icon color="">how_to_vote</mat-icon>{{lastGuess.guess}}
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-icon color="primary">directions_boat</mat-icon>{{lastGuessResult.nrOfShips}}
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-icon color="accent">support</mat-icon>{{lastGuessResult.nrOfBuoys}}
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-divider [inset]="true"></mat-divider>
+    <br>
+
+    <form (ngSubmit)="onSubmitGuess()" #newGuessForm="ngForm">
+      <div class="form-group">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Guess</mat-label>
+          <input matInput type="text" id="guess" placeholder="1234" name="guess"
+                 required
+                 [(ngModel)]="currentGuess.guess"
+                 #guess="ngModel"
+                 #message
+                 maxlength="{{game.nrOfDigits}}">
+          <mat-hint align="start" [hidden]="guess.valid || guess.pristine">
+            Guess is required and should contain {{game.nrOfDigits}} digits.
+          </mat-hint>
+          <mat-hint align="end">{{message.value.length}} / {{game.nrOfDigits}}</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="!newGuessForm.form.valid">Submit</button>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <app-card-actions></app-card-actions>
+  </mat-card-actions>
+</mat-card>

@@ -1,5 +1,5 @@
 export class NewGame {
   name: string;
-  dateOfBirth: number;
+  dateOfBirth: string;
   nrOfDigits: number;
 }
