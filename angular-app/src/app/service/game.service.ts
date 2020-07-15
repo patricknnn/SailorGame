@@ -21,7 +21,7 @@ export class GameService {
   getAllGames(): Observable<Game[]> {
     return this.http.get<Game[]>(API_URL + 'game/all');
   }
-  getGame(id: number): Observable<Game> {
+  getGame(id: string): Observable<Game> {
     return this.http.get<Game>(API_URL + 'game/gameId/' + id);
   }
   newGame(data: NewGame): Observable<Game> {

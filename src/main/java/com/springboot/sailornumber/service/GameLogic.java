@@ -36,25 +36,24 @@ public class GameLogic {
      * @param userGuess The user's guess
      * @return Result of the comparison
      */
-    private GuessResult compareNumbers(int nrToGuess, int userGuess) {
+    private GuessResult compareNumbers(String nrToGuess, String userGuess) {
         // Initialize variables
         boolean correct = false;
         int nrOfShips = 0, nrOfBuoys = 0;
-        String a = Integer.toString(nrToGuess), b = Integer.toString(userGuess);
 
         // Check for correct guess first
         if (nrToGuess == userGuess) {
             correct = true;
-            nrOfShips = a.length();
+            nrOfShips = nrToGuess.length();
         } else {
             // Loop the string
-            for (int i = 0; i < a.length(); i++) {
+            for (int i = 0; i < nrToGuess.length(); i++) {
                 // Correct digit and index
-                if (a.charAt(i) == b.charAt(i)) {
+                if (nrToGuess.charAt(i) == userGuess.charAt(i)) {
                     nrOfShips++;
                 } else {
                     // Correct digit wrong index
-                    if (a.indexOf(b.charAt(i)) != -1) {
+                    if (nrToGuess.indexOf(userGuess.charAt(i)) != -1) {
                         nrOfBuoys++;
                     }
                 }

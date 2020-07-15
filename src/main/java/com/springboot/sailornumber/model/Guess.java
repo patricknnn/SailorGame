@@ -12,7 +12,7 @@ public class Guess {
     @Column(name = "gameId", nullable = false)
     private Long gameId;
     @Column(name = "guess", nullable = false)
-    private Integer guess;
+    private String guess;
     @Column(name = "timestamp", nullable = false)
     private Timestamp timestamp;
 
@@ -26,7 +26,7 @@ public class Guess {
      * @param gameId The game id
      * @param guess The guess
      */
-    public Guess(Long gameId, Integer guess) {
+    public Guess(Long gameId, String guess) {
         this.gameId = gameId;
         this.guess = guess;
         this.timestamp = new Timestamp(System.currentTimeMillis());
@@ -43,7 +43,7 @@ public class Guess {
         return gameId;
     }
 
-    public Integer getGuess() {
+    public String getGuess() {
         return guess;
     }
 

@@ -12,8 +12,7 @@ body {
 
 /** CARD */
 .mat-card {
-  max-width: 600px;
-  margin-top: 20px;
+  max-width: 400px;
   background-color: #ddd;
 }
 

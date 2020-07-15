@@ -18,7 +18,7 @@ public class Game {
     @Column(name = "nrOfDigits", nullable = false)
     private Integer nrOfDigits;
     @Column(name = "nrToGuess", nullable = false)
-    private Integer nrToGuess;
+    private String nrToGuess;
     @Column(name = "timestamp", nullable = false)
     private Timestamp timestamp;
 
@@ -46,9 +46,9 @@ public class Game {
      * @param nrOfDigits Nr of digits to return
      * @return int
      */
-    private int randomNumber(Integer nrOfDigits) {
+    private String randomNumber(Integer nrOfDigits) {
         int m = (int) Math.pow(10, nrOfDigits - 1);
-        return m + new Random().nextInt(9 * m);
+        return Integer.toString(m + new Random().nextInt(9 * m));
     }
 
     /**
@@ -70,7 +70,7 @@ public class Game {
         return nrOfDigits;
     }
 
-    public Integer getNrToGuess() {
+    public String getNrToGuess() {
         return nrToGuess;
     }
 

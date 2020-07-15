@@ -2,9 +2,9 @@ package com.springboot.sailornumber.payload.request;
 
 public class GuessRequest {
     private Long gameId;
-    private Integer guess;
+    private String guess;
 
-    public GuessRequest(Long gameId, Integer guess) {
+    public GuessRequest(Long gameId, String guess) {
         this.gameId = gameId;
         this.guess = guess;
     }
@@ -17,11 +17,11 @@ public class GuessRequest {
         this.gameId = gameId;
     }
 
-    public Integer getGuess() {
+    public String getGuess() {
         return guess;
     }
 
-    public void setGuess(Integer guess) {
+    public void setGuess(String guess) {
         this.guess = guess;
     }
 }

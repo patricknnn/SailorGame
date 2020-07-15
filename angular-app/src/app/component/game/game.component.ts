@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NewGame} from "../../model/newgame";
-import {GameService} from "../../service/game.service";
-import {Router} from "@angular/router";
+import {NewGame} from '../../model/newgame';
+import {GameService} from '../../service/game.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -9,6 +9,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  loading = false;
+  loadingMessage = 'submitting data';
   newGame: NewGame = new NewGame();
 
   constructor(private gameService: GameService,
@@ -23,10 +25,12 @@ export class GameComponent implements OnInit {
   }
 
   onSubmitNewGame(): void {
+    this.loading = true;
     this.gameService.newGame(this.newGame)
       .subscribe(data => {
-        console.log(data.id);
-        this.router.navigate(['/guess', { id: data.id }]);
+        console.log(data);
+        this.router.navigate(['/guess', { id: data }]);
+        this.loading = false;
       }, error => console.log(error));
   }
 

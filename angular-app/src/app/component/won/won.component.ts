@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Game} from "../../model/game";
+import {Game} from '../../model/game';
 
 @Component({
   selector: 'app-won',
@@ -7,6 +7,8 @@ import {Game} from "../../model/game";
   styleUrls: ['./won.component.css']
 })
 export class WonComponent implements OnInit {
+  loading = false;
+  loadingMessage = 'loading';
   game: Game;
 
   constructor() { }

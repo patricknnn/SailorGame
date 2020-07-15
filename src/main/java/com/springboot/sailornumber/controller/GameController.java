@@ -24,16 +24,16 @@ public class GameController {
     }
 
     @GetMapping("/gameId/{id}")
-    public ResponseEntity<Game> getGameById(@PathVariable(value = "id") Long gameId) throws ResourceNotFoundException {
-        Game game = gameRepository.findById(gameId).orElseThrow(
+    public ResponseEntity<Game> getGameById(@PathVariable(value = "id") String gameId) throws ResourceNotFoundException {
+        Game game = gameRepository.findById(Long.parseLong(gameId)).orElseThrow(
                 () -> new ResourceNotFoundException("Game not found for this id : " + gameId)
         );
         return ResponseEntity.ok().body(game);
     }
 
     @PostMapping("/new")
-    public Game newGame(@Valid @RequestBody NewGameRequest newGameRequest) {
+    public Long newGame(@Valid @RequestBody NewGameRequest newGameRequest) {
         Game game = new Game(newGameRequest.getName(), newGameRequest.getDateOfBirth(), newGameRequest.getNrOfDigits());
-        return gameRepository.save(game);
+        return gameRepository.save(game).getId();
     }
 }

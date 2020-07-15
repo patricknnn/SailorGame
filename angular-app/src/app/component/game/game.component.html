@@ -1,4 +1,6 @@
-<mat-card class="mat-card mat-elevation-z8">
+<app-loading *ngIf="loading" [message]="loadingMessage"></app-loading>
+
+<mat-card *ngIf="!loading" class="mat-card mat-elevation-z8">
   <mat-card-header>
     <div mat-card-avatar>
       <mat-icon color="primary" class="card-icon">add_circle</mat-icon>

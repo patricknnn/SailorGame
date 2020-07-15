@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Guess} from "../../model/guess";
-import {GameService} from "../../service/game.service";
+import {Guess} from '../../model/guess';
+import {GameService} from '../../service/game.service';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {Game} from "../../model/game";
-import {GuessResult} from "../../model/guessresult";
-import {GuessResponse} from "../../model/guessres";
+import {Game} from '../../model/game';
+import {GuessResult} from '../../model/guessresult';
+import {GuessResponse} from '../../model/guessres';
 
 @Component({
   selector: 'app-guess',
@@ -12,6 +12,8 @@ import {GuessResponse} from "../../model/guessres";
   styleUrls: ['./guess.component.css']
 })
 export class GuessComponent implements OnInit {
+  loading = false;
+  loadingMessage = 'loading';
   game: Game;
   currentGuess: Guess = new Guess();
   lastGuess: Guess;
@@ -25,36 +27,26 @@ export class GuessComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.route.queryParams.subscribe(params => {
-    //   this.fetchGame(params['id']);
-    // });
-    this.mockGame();
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+      this.fetchGame(params.id);
+    });
   }
 
-  mockGame(): void {
-    this.game = new Game();
-    this.game.id = 1;
-    this.game.name = 'Patrick';
-    this.game.nrOfDigits = 4;
-    this.game.dateOfBirth = "30-06-1992"
-    this.lastGuess = new Guess();
-    this.lastGuess.guess = '1234';
-    this.lastGuess.gameId = 1;
-    this.lastGuessResult = new GuessResult();
-    this.lastGuessResult.correct = false;
-    this.lastGuessResult.nrOfShips = 3;
-    this.lastGuessResult.nrOfBuoys = 1;
-  }
-
-  fetchGame(id: number): void {
+  fetchGame(id: string): void {
+    this.loadingMessage = 'fetching game';
+    this.loading = true;
     this.gameService.getGame(id)
       .subscribe(data => {
         console.log(data);
         this.game = data;
+        this.loading = false;
       }, error => console.log(error));
   }
 
   onSubmitGuess(): void {
+    this.loadingMessage = 'submitting guess';
+    this.loading = true;
     this.currentGuess.gameId = this.game.id;
     this.gameService.submitGuess(this.currentGuess)
       .subscribe(data => {
@@ -63,6 +55,7 @@ export class GuessComponent implements OnInit {
         this.processData(data);
         // Reset
         this.reset();
+        this.loading = false;
       }, error => console.log(error));
   }
 

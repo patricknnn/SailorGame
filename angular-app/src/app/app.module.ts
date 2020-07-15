@@ -13,6 +13,7 @@ import {WelcomeComponent} from './component/welcome/welcome.component';
 import {GuessComponent} from './component/guess/guess.component';
 import {WonComponent} from './component/won/won.component';
 import {CardActionsComponent} from './component/card-actions/card-actions.component';
+import { LoadingComponent } from './component/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {CardActionsComponent} from './component/card-actions/card-actions.compon
     GuessComponent,
     WonComponent,
     CardActionsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

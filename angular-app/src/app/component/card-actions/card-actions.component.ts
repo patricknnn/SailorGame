@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-card-actions',
@@ -6,9 +6,9 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./card-actions.component.css']
 })
 export class CardActionsComponent {
-  @Input() play: boolean = true;
-  @Input() stats: boolean = true;
-  @Input() exit: boolean = true;
+  @Input() play = true;
+  @Input() stats = true;
+  @Input() exit = true;
 
   constructor() { }
 
