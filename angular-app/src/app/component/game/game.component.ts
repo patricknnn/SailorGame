@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NewGame} from '../../model/newgame';
+import {NewGameRequest} from '../../model/newGameRequest';
 import {GameService} from '../../service/game.service';
 import {Router} from '@angular/router';
 
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class GameComponent implements OnInit {
   loading = false;
   loadingMessage = 'submitting data';
-  newGame: NewGame = new NewGame(null, null, null);
+  newGame: NewGameRequest = new NewGameRequest(null, null, null);
 
   constructor(private gameService: GameService,
               private router: Router) { }
@@ -21,7 +21,7 @@ export class GameComponent implements OnInit {
   }
 
   reset(): void {
-    this.newGame = new NewGame(null, null, null);
+    this.newGame = new NewGameRequest(null, null, null);
   }
 
   onSubmitNewGame(): void {

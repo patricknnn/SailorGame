@@ -1,10 +1,10 @@
 import {Guess} from './guess';
-import {GuessResult} from './guessresult';
+import {GuessResult} from './guessResult';
 
 export class GuessResponse {
   constructor(
     public guess: Guess,
-    public result: GuessResult,
+    public guessResult: GuessResult,
   ) {
   }
 }

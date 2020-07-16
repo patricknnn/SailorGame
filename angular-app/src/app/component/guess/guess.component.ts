@@ -5,8 +5,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {Game} from '../../model/game';
-import {GuessResult} from '../../model/guessresult';
-import {GuessResponse} from '../../model/guessres';
+import {GuessResult} from '../../model/guessResult';
+import {GuessResponse} from '../../model/guessResponse';
+import {GuessRequest} from "../../model/guessRequest";
 
 @Component({
   selector: 'app-guess',
@@ -17,7 +18,7 @@ export class GuessComponent implements OnInit {
   loading = false;
   loadingMessage = 'loading';
   game: Game;
-  currentGuess: Guess = new Guess(null, null);
+  guessRequest: GuessRequest = new GuessRequest(null, null);
   lastGuess: Guess;
   lastGuessResult: GuessResult;
 
@@ -38,6 +39,7 @@ export class GuessComponent implements OnInit {
     this.loading = true;
     this.gameService.getGame(id)
       .subscribe(data => {
+        console.log('response:');
         console.log(data);
         this.game = data;
         this.loading = false;
@@ -47,9 +49,10 @@ export class GuessComponent implements OnInit {
   onSubmitGuess(): void {
     this.loadingMessage = 'submitting guess';
     this.loading = true;
-    this.currentGuess.gameId = this.game.id;
-    this.gameService.submitGuess(this.currentGuess)
+    this.guessRequest.gameId = this.game.id;
+    this.gameService.submitGuess(this.guessRequest)
       .subscribe(data => {
+        console.log('response:');
         console.log(data);
         // Process data
         this.processData(data);
@@ -61,14 +64,14 @@ export class GuessComponent implements OnInit {
 
   processData(data: GuessResponse): void {
     this.lastGuess = data.guess;
-    this.lastGuessResult = data.result;
+    this.lastGuessResult = data.guessResult;
     // If won, redirect
-    if (data.result.correct) {
+    if (data.guessResult.correct) {
       this.router.navigate(['/won', {id: this.game.id}]);
     }
   }
 
   reset(): void {
-    this.currentGuess = new Guess(null, null);
+    this.guessRequest = new GuessRequest(null, null);
   }
 }

@@ -1,8 +1,7 @@
-export class Guess {
+
+export class GuessRequest {
   constructor(
-    public id: number,
     public gameId: number,
     public guess: string,
-    public timestamp: number,
   ) {}
 }

@@ -27,7 +27,8 @@ public class GameLogic {
                 () -> new ResourceNotFoundException("Game not found for id : " + guess.getGameId())
         );
         // Return the result
-        return compareNumbers(game.getNrToGuess(), guess.getGuess());
+        return new GuessResult(false, 2, 2);
+        //return compareNumbers(game.getNrToGuess(), guess.getGuess());
     }
 
     /**
@@ -62,6 +63,5 @@ public class GameLogic {
         // Return the result
         return new GuessResult(correct, nrOfShips, nrOfBuoys);
     }
-
 
 }

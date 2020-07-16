@@ -43,8 +43,8 @@ public class GuessController {
 
     @PostMapping("/submit")
     public GuessResponse submitGuess(@Valid @RequestBody GuessRequest guessRequest) throws ResourceNotFoundException {
-        Guess guess = new Guess(guessRequest.getGameId(), guessRequest.getGuess());
-        Guess savedGuess = guessRepository.save(guess);
+        Guess savedGuess = guessRepository.save(new Guess(guessRequest.getGameId(), guessRequest.getGuess()));
+
         GuessResult guessResult = gameLogic.guessResult(savedGuess);
 
         return new GuessResponse(savedGuess, guessResult);

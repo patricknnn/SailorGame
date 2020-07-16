@@ -14,6 +14,7 @@ import {GuessComponent} from './component/guess/guess.component';
 import {WonComponent} from './component/won/won.component';
 import {CardActionsComponent} from './component/card-actions/card-actions.component';
 import { LoadingComponent } from './component/loading/loading.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoadingComponent } from './component/loading/loading.component';
     WonComponent,
     CardActionsComponent,
     LoadingComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

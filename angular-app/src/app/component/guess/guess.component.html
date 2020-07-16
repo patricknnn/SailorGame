@@ -35,7 +35,7 @@
                  pattern="[0-9]*"
                  minlength="{{game.nrOfDigits}}"
                  maxlength="{{game.nrOfDigits}}"
-                 [(ngModel)]="currentGuess.guess"
+                 [(ngModel)]="guessRequest.guess"
                  #guess="ngModel"
                  #message>
           <mat-hint align="start" [hidden]="guess.valid || guess.pristine">

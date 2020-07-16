@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {NewGame} from '../model/newgame';
+import {NewGameRequest} from '../model/newGameRequest';
 import {Game} from '../model/game';
 import {Guess} from '../model/guess';
-import {GuessResponse} from '../model/guessres';
+import {GuessResponse} from '../model/guessResponse';
+import {GuessRequest} from "../model/guessRequest";
 
 const API_URL = 'http://localhost:8080/api/';
 
@@ -24,8 +25,9 @@ export class GameService {
   getGame(id: string): Observable<Game> {
     return this.http.get<Game>(API_URL + 'game/gameId/' + id);
   }
-  newGame(data: NewGame): Observable<Game> {
-    console.log('Payload: ' + JSON.stringify(data));
+  newGame(data: NewGameRequest): Observable<Game> {
+    console.log('Payload: ');
+    console.log(data);
     return this.http.post<Game>(API_URL + 'game/new', data);
   }
 
@@ -41,8 +43,9 @@ export class GameService {
   getGuessById(id: number): Observable<Guess> {
     return this.http.get<Guess>(API_URL + 'guess/guessId/' + id);
   }
-  submitGuess(data: Guess): Observable<GuessResponse> {
-    console.log('Payload: ' + JSON.stringify(data));
+  submitGuess(data: GuessRequest): Observable<GuessResponse> {
+    console.log('Payload: ');
+    console.log(data);
     return this.http.post<GuessResponse>(API_URL + 'guess/submit', data);
   }
 

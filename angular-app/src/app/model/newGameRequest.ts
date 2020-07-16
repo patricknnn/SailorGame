@@ -1,4 +1,4 @@
-export class NewGame {
+export class NewGameRequest {
   constructor(
     public name: string,
     public dateOfBirth: string,
