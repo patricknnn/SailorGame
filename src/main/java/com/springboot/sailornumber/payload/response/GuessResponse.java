@@ -18,4 +18,9 @@ public class GuessResponse {
     public GuessResult getGuessResult() {
         return guessResult;
     }
+
+    @Override
+    public String toString() {
+        return "GuessResponse{" + "guess=" + guess + ", guessResult=" + guessResult + '}';
+    }
 }

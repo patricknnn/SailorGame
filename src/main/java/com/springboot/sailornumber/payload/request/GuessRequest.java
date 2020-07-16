@@ -24,4 +24,9 @@ public class GuessRequest {
     public void setGuess(String guess) {
         this.guess = guess;
     }
+
+    @Override
+    public String toString() {
+        return "GuessRequest{" + "gameId=" + gameId + ", guess='" + guess + '\'' + '}';
+    }
 }

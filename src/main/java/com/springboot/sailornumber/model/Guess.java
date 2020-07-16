@@ -50,4 +50,9 @@ public class Guess {
     public Timestamp getTimestamp() {
         return timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Guess{" + "id=" + id + ", gameId=" + gameId + ", guess='" + guess + '\'' + ", timestamp=" + timestamp + '}';
+    }
 }

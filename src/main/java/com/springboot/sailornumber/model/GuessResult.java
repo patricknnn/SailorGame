@@ -22,4 +22,9 @@ public class GuessResult {
     public Integer getNrOfBuoys() {
         return nrOfBuoys;
     }
+
+    @Override
+    public String toString() {
+        return "GuessResult{" + "correct=" + correct + ", nrOfShips=" + nrOfShips + ", nrOfBuoys=" + nrOfBuoys + '}';
+    }
 }

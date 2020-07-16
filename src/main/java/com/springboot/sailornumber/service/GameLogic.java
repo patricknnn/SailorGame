@@ -1,35 +1,14 @@
 package com.springboot.sailornumber.service;
-
-import com.springboot.sailornumber.exception.ResourceNotFoundException;
-import com.springboot.sailornumber.model.Game;
-import com.springboot.sailornumber.model.Guess;
 import com.springboot.sailornumber.model.GuessResult;
-import com.springboot.sailornumber.repository.GameRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class GameLogic {
-    @Autowired
-    private GameRepository gameRepository;
+    Logger logger = LoggerFactory.getLogger(GameLogic.class);
 
     public GameLogic() {}
-
-    /**
-     * Evaluates the guess
-     * @param guess The user's guess
-     * @return Result of the guess
-     * @throws ResourceNotFoundException Game not found exception
-     */
-    public GuessResult guessResult(Guess guess) throws ResourceNotFoundException {
-        // Attempt to fetch correct game
-        Game game = gameRepository.findById(guess.getGameId()).orElseThrow(
-                () -> new ResourceNotFoundException("Game not found for id : " + guess.getGameId())
-        );
-        // Return the result
-        return new GuessResult(false, 2, 2);
-        //return compareNumbers(game.getNrToGuess(), guess.getGuess());
-    }
 
     /**
      * Compares 2 given integers
@@ -37,13 +16,13 @@ public class GameLogic {
      * @param userGuess The user's guess
      * @return Result of the comparison
      */
-    private GuessResult compareNumbers(String nrToGuess, String userGuess) {
+    public GuessResult getGuessResult(String nrToGuess, String userGuess) {
         // Initialize variables
         boolean correct = false;
         int nrOfShips = 0, nrOfBuoys = 0;
 
         // Check for correct guess first
-        if (nrToGuess == userGuess) {
+        if (nrToGuess.equals(userGuess)) {
             correct = true;
             nrOfShips = nrToGuess.length();
         } else {

@@ -77,4 +77,16 @@ public class Game {
     public Timestamp getTimestamp() {
         return timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", nrOfDigits=" + nrOfDigits +
+                ", nrToGuess='" + nrToGuess + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
