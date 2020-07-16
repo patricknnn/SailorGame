@@ -1,5 +1,8 @@
 export class NewGame {
-  name: string;
-  dateOfBirth: string;
-  nrOfDigits: number;
+  constructor(
+    public name: string,
+    public dateOfBirth: string,
+    public nrOfDigits: number,
+  ) {
+  }
 }

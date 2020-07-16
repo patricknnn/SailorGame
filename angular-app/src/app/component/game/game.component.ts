@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class GameComponent implements OnInit {
   loading = false;
   loadingMessage = 'submitting data';
-  newGame: NewGame = new NewGame();
+  newGame: NewGame = new NewGame(null, null, null);
 
   constructor(private gameService: GameService,
               private router: Router) { }
@@ -21,7 +21,7 @@ export class GameComponent implements OnInit {
   }
 
   reset(): void {
-    this.newGame = new NewGame();
+    this.newGame = new NewGame(null, null, null);
   }
 
   onSubmitNewGame(): void {

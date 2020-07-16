@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Guess} from '../../model/guess';
 import {GameService} from '../../service/game.service';
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 import {Game} from '../../model/game';
 import {GuessResult} from '../../model/guessresult';
 import {GuessResponse} from '../../model/guessres';
@@ -15,7 +17,7 @@ export class GuessComponent implements OnInit {
   loading = false;
   loadingMessage = 'loading';
   game: Game;
-  currentGuess: Guess = new Guess();
+  currentGuess: Guess = new Guess(null, null);
   lastGuess: Guess;
   lastGuessResult: GuessResult;
 
@@ -27,10 +29,8 @@ export class GuessComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      console.log(params);
-      this.fetchGame(params.id);
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    this.fetchGame(id);
   }
 
   fetchGame(id: string): void {
@@ -69,6 +69,6 @@ export class GuessComponent implements OnInit {
   }
 
   reset(): void {
-    this.currentGuess = new Guess();
+    this.currentGuess = new Guess(null, null);
   }
 }

@@ -1,4 +1,6 @@
 export class Guess {
-  gameId: number;
-  guess: string;
+  constructor(
+    public gameId: number,
+    public guess: string,
+  ) {}
 }

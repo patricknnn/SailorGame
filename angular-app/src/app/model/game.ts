@@ -1,8 +1,10 @@
 export class Game {
-  id: number;
-  name: string;
-  dateOfBirth: string;
-  nrOfDigits: number;
-  nrToGuess: number;
-  timestamp: number;
+  constructor(
+    public id: number,
+    public name: string,
+    public dateOfBirth: string,
+    public nrOfDigits: number,
+    public nrToGuess: number,
+    public timestamp: number,
+  ) {}
 }

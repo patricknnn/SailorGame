@@ -1,5 +1,8 @@
 export class GuessResult {
-  correct: boolean;
-  nrOfShips: number;
-  nrOfBuoys: number;
+  constructor(
+    public correct: boolean,
+    public nrOfShips: number,
+    public nrOfBuoys: number,
+  ) {
+  }
 }
